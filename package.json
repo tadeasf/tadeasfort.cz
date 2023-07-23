@@ -34,7 +34,7 @@
   "devDependencies": {
     "contentful-import": "^8.3.2",
     "gatsby-provision-contentful": "^0.0.5",
-    "netlify-cli": "^10.0.0"
+    "netlify-cli": "^15.9.1"
   },
   "engines": {
     "node": ">=18.0.0"
