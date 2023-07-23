@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -15,6 +15,60 @@ import Tags from '../components/tags'
 import * as styles from './blog-post.module.css'
 
 class BlogPostTemplate extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      likes: 0,
+      dislikes: 0,
+      error: null,
+    }
+  }
+
+  componentDidMount() {
+    // Fetch the initial likes/dislikes counts when the component mounts
+    this.fetchVotes()
+  }
+
+  fetchVotes = async () => {
+    const post = get(this.props, 'data.contentfulBlogPost')
+    try {
+      const response = await fetch(
+        `http://194.182.90.63:3333/vote/${post.slug}`
+      )
+      const data = await response.json()
+      this.setState({
+        likes: data.likes,
+        dislikes: data.dislikes,
+      })
+    } catch (error) {
+      console.error('Error fetching votes: ', error)
+    }
+  }
+
+  handleVote = async (voteType) => {
+    const post = get(this.props, 'data.contentfulBlogPost')
+    try {
+      const response = await fetch(
+        `http://194.182.90.63:3333/vote/${post.slug}/${voteType}`,
+        { method: 'POST' }
+      )
+      const data = await response.json()
+
+      if (!response.ok) {
+        this.setState({ error: data.message })
+        return
+      }
+
+      this.setState({
+        likes: data.likes,
+        dislikes: data.dislikes,
+        error: null, // Clear any previous error
+      })
+    } catch (error) {
+      this.setState({ error: 'Error voting: ' + error.message })
+    }
+  }
+
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
     const previous = get(this.props, 'data.previous')
@@ -54,6 +108,13 @@ class BlogPostTemplate extends React.Component {
           title={post.title}
           content={post.description}
         />
+        <div className={styles.voteButtons}>
+          <button onClick={() => this.handleVote('like')}>Like</button>
+          <p>{this.state.likes}</p>
+          <button onClick={() => this.handleVote('dislike')}>Dislike</button>
+          <p>{this.state.dislikes}</p>
+        </div>
+        {this.state.error && <p>{this.state.error}</p>}
         <div className={styles.container}>
           <span className={styles.meta}>
             {post.author?.name} &middot;{' '}
