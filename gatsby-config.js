@@ -14,7 +14,48 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-image',
-    `gatsby-plugin-sitemap`,
+
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allContentfulBlogPost {
+            nodes {
+              slug
+              updatedAt
+            }
+          }
+        }`,
+        resolveSiteUrl: () => 'https://tadeasfort.cz',
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allContentfulBlogPost: { nodes: allContentfulNodes },
+        }) => {
+          const contentfulNodeMap = allContentfulNodes.reduce((acc, node) => {
+            const { slug } = node
+            acc[`/${slug}`] = node
+
+            return acc
+          }, {})
+
+          return allPages.map((page) => {
+            return { ...page, ...contentfulNodeMap[page.path] }
+          })
+        },
+        serialize: ({ path, updatedAt }) => {
+          return {
+            url: path,
+            lastmod: updatedAt,
+          }
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-contentful',
       options: {
