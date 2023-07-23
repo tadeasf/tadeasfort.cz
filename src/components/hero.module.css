@@ -41,10 +41,16 @@
   margin: 0;
 }
 
-@media (min-width: 480px) {
+@media (max-width: 480px) {
   .details {
-    padding-top: var(--space-3xl);
+    display: none;
   }
+
+  .image {
+    height: 35vh;
+    max-height: 400px;
+  }
+
 }
 
 @media (min-width: 768px) {

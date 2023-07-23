@@ -65,8 +65,13 @@
   list-style: none;
   padding: 0;
 }
+.voteButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* adjust as needed */
+}
 
-.voteButtons button.voteButton {
+.voteButton {
   padding: 10px 20px;
   border: none;
   background-color: #ddd;
@@ -76,16 +81,16 @@
   transition: background-color 0.3s ease;
 }
 
-.voteButtons button.voteButton:hover {
+.voteButton:hover {
   background-color: #ccc;
 }
 
-.voteButtons .count {
-  padding: 5px 10px; /* padding for count container */
-  background-color: #f5f5f5; /* background color for count container */
-  border-radius: 5px; /* border radius for count container */
-  font-weight: 500; /* make count text slightly bold */
-  margin: 0 10px;
+.voteButton.liked {
+  background-color: blue;
+}
+
+.voteButton.disliked {
+  background-color: red;
 }
 
 @media (min-width: 768px) {
@@ -96,9 +101,6 @@
 
   .article {
     gap: var(--space-xl);
-  }
-  .voteButtons {
-    gap: 1em; /* increased gap between buttons and counts on larger screens */
   }
 }
 

@@ -113,19 +113,23 @@ class BlogPostTemplate extends React.Component {
         />
         <div className={styles.voteButtons}>
           <button
-            className={styles.voteButton}
+            className={`${styles.voteButton} ${
+              this.state.userVote === 'like' ? styles.liked : ''
+            }`}
             onClick={() => this.handleVote('like')}
+            disabled={this.state.userVote}
           >
-            Like
+            Like [{this.state.likes}]
           </button>
-          <p className={styles.count}>{this.state.likes}</p>
           <button
-            className={styles.voteButton}
+            className={`${styles.voteButton} ${
+              this.state.userVote === 'dislike' ? styles.disliked : ''
+            }`}
             onClick={() => this.handleVote('dislike')}
+            disabled={this.state.userVote}
           >
-            Dislike
+            Dislike [{this.state.dislikes}]
           </button>
-          <p className={styles.count}>{this.state.dislikes}</p>
         </div>
         <div className={styles.container}>
           <span className={styles.meta}>
