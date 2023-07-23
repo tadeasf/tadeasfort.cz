@@ -25,9 +25,9 @@ class BlogPostTemplate extends React.Component {
 
   async componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    const response = await axios.get(
-      `http://194.182.90.63:3333/vote/${post.slug}`
-    )
+    let url = `https://194.182.90.63:3333/vote/${post.slug}`
+    console.log(url)
+    const response = await axios.get(url)
 
     // Load user vote from local storage
     const likeActive = localStorage.getItem(`like-${post.slug}`)
@@ -59,9 +59,9 @@ class BlogPostTemplate extends React.Component {
     })
 
     // Make API call to register vote
-    const response = await axios.post(
-      `http://194.182.90.63:3333/vote/${post.slug}/${voteType}`
-    )
+    let url = `https://194.182.90.63:3333/vote/${post.slug}/${voteType}`
+    console.log(url)
+    const response = await axios.post(url)
 
     // Update likes and dislikes state from response
     this.setState({
