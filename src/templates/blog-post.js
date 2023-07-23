@@ -43,16 +43,15 @@ class BlogPostTemplate extends React.Component {
     let response
     try {
       response = await fetch(`/api/vote/${post.slug}`)
-      if (response.ok) {
-        const data = await response.json()
-        this.setState({ likes: data.likes, dislikes: data.dislikes })
-      } else {
-        this.setState({ error: 'Error fetching votes: ' + response.statusText })
-      }
     } catch (error) {
-      this.setState({ error: 'Error fetching votes: ' + error.message })
+      console.error('Error fetching votes: ', error)
+    }
+    if (response.ok) {
+      const data = await response.json()
+      this.setState({ likes: data.likes, dislikes: data.dislikes })
     }
   }
+
   handleVote = async (voteType) => {
     const post = get(this.props, 'data.contentfulBlogPost')
     let response
@@ -154,7 +153,7 @@ class BlogPostTemplate extends React.Component {
                 transitionTime={500}
                 stopOnHover={true}
                 swipeable={true}
-                dynamicHeight={true}
+                dynamicHeight={false}
                 emulateTouch={true}
                 selectedItem={0}
                 swipeScrollTolerance={5}
