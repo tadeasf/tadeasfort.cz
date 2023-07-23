@@ -1,0 +1,14 @@
+{
+  'title': { Markdownlint configuration schema },
+  'type': { object },
+  'properties':
+    {
+      'MD046':
+        {
+          'description': 'MD046: Code block style',
+          'type': 'boolean',
+          'default': false,
+        },
+    },
+  'additionalProperties': { false },
+}

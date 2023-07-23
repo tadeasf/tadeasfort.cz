@@ -1,73 +1,71 @@
-# Contentful Gatsby Starter Blog
+# My website to showcase how good a dev I actually am
 
-Create a [Gatsby](http://gatsbyjs.com/) blog powered by [Contentful](https://www.contentful.com).
+This website is a showcase of my development capabilities. Originally based on
+this [gatsby starter](https://github.com/contentful/starter-gatsby-blog).
+This site has been heavily customized to include additional features,
+demonstrating my proficiency in various technologies.
 
-![An article page of the starter blog](./screenshot.png "An article page of the starter blog")
+## Get the source code and install dependencies
 
-Static sites are scalable, secure and have very little required maintenance. They come with a drawback though. Not everybody feels good editing files, building a project and uploading it somewhere. This is where Contentful comes into play.
-
-With Contentful and Gatsby you can connect your favorite static site generator with an API that provides an easy to use interface for people writing content and automate the publishing using services like [Travis CI](https://travis-ci.org/) or [Netlify](https://www.netlify.com/).
-
-## Features
-
-- Simple content model and structure. Easy to adjust to your needs.
-- Use the [synchronization feature](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization) of our [Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/).
-- Responsive/adaptive images via [gatsby-plugin-image](https://www.gatsbyjs.org/packages/gatsby-plugin-image/) and our [Images API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization/initial-synchronization-of-entries-of-a-specific-content-type).
-
-## Getting started
-
-See our [official Contentful getting started guide](https://www.contentful.com/developers/docs/tutorials/general/get-started/).
-
-### Get the source code and install dependencies.
-
-```
-$ git clone https://github.com/contentful/starter-gatsby-blog.git
-$ npm install
+```cli
+git clone https://github.com/your-repo-name/your-project-name.git
+npm install
 ```
 
-Or use Gatsby Cloud
-
-Use Deploy Now to get started in [Gatsby Cloud](https://gatsbyjs.com/products/cloud):
-
-[<img src="https://www.gatsbyjs.com/deploynow.png" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/contentful/starter-gatsby-blog)
-
-If you use Deploy Now, Gatsby Cloud will run the `gatsby-provision` script on your behalf, if you choose, after you Quick Connected to your empty Contentful Space. That script will add the necessary content models and content to support this site.
-
-
-Or use the [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli).
-
-```
-$ gatsby new contentful-starter-blog https://github.com/contentful/starter-gatsby-blog/
+```cli
+gatsby new contentful-starter-blog https://github.com/contentful/starter-gatsby-blog/
 ```
 
-### Set up of the needed content model and create a configuration file
+## Content Model and Configuration File Setup
 
-This project comes with a Contentful setup command `npm run setup`.
+The project utilizes the Contentful CMS. You can set up the needed content model
+and create a configuration file using the included setup command:
 
-This command will ask you for a space ID, and access tokens for the Contentful Management and Delivery API and then import the needed content model into the space you define and write a config file (`./.contentful.json`).
+```cli
+npm run setup
+```
 
-`npm run setup` automates that for you but if you want to do it yourself rename `.contentful.json.sample` to `.contentful.json` and add your configuration in this file.
+This command will prompt you to enter a space ID, and access tokens for the
+Contentful Management and Delivery API. It will then import the necessary content
+model into the specified space and write a config file (./.contentful.json).
+If you wish to set this up manually, rename .contentful.json.sample to
+.contentful.json and input your configuration into this file.
 
-## Crucial Commands
+## Key Commands
 
-### `npm run dev`
+```cli
+npm run dev    # Run the project locally with live reload in development mode.
+npm run build  # Run a production build into `./public`. The result is ready for
+any static hosting you prefer.
+npm run serve  # Spin up a production-ready server with your blog. Remember to
+build your page beforehand.
+```
 
-Run the project locally with live reload in development mode.
+## Extended Features
 
-### `npm run build`
+Beyond the base gatsby starter, this project includes the following custom features:
 
-Run a production build into `./public`. The result is ready to be put on any static hosting you prefer.
+Backend Repo Integration: This project is integrated with a backend repository
+hosted on [https://github.com/tadeasf/tadeasfort.cz-backend]. This backend handles
+all the voting logic for the like/dislike functionality.
 
-### `npm run serve`
+Like/Dislike Function: Each blog post includes a like and dislike button,
+allowing users to voice their opinions on the content. The total number of likes
+and dislikes are stored and managed in the backend, which provides the updated
+counts to the front end.
 
-Spin up a production-ready server with your blog. Don't forget to build your page beforehand.
+React Responsive Carousel Integration: Blog posts now have the capability to
+include image carousels using react-responsive-carousel. This allows for
+visually rich content, making each post more engaging for readers.
 
-## Deployment
+Google Analytics Integration: To track and analyze website traffic data,
+Google Analytics has been integrated into the site. This helps in understanding
+user behavior and improving site content based on data-driven insights.
 
-See the [official Contentful getting started guide](https://www.contentful.com/developers/docs/tutorials/general/get-started/).
+Sitemap Generation: A sitemap is automatically generated for the website.
+This improves the SEO of the site, making it more discoverable to search engines.
 
-## Contribution
+Enjoy exploring the site and digging into the code!
 
-Feel free to open pull requests to fix bugs. If you want to add features, please have a look at the [original version](https://github.com/contentful-userland/gatsby-contentful-starter). It is always open to contributions and pull requests.
-
-You can learn more about how Contentful userland is organized by visiting [our about repository](https://github.com/contentful-userland/about).
+Remember to replace [insert-backend-repo-link-here] with the actual link to your
+backend repo.
