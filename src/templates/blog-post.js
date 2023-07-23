@@ -146,17 +146,15 @@ class BlogPostTemplate extends React.Component {
             {galleryImages && (
               <Carousel
                 showArrows={true}
-                showStatus={true}
-                showThumbs={true}
+                showStatus={false}
+                showThumbs={false}
                 infiniteLoop={true}
-                autoPlay={true}
-                interval={3000}
+                autoPlay={false}
                 transitionTime={500}
                 stopOnHover={true}
                 swipeable={true}
-                dynamicHeight={true}
+                dynamicHeight={false}
                 emulateTouch={true}
-                thumbWidth={100}
                 selectedItem={0}
                 swipeScrollTolerance={5}
               >
