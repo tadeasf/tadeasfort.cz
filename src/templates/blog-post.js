@@ -26,8 +26,10 @@ class BlogPostTemplate extends React.Component {
   }
 
   componentDidMount() {
+    const post = get(this.props, 'data.contentfulBlogPost')
+
     // Load user vote from local storage
-    const userVote = window.localStorage.getItem('userVote')
+    const userVote = window.localStorage.getItem(`userVote-${post.slug}`)
     if (userVote) {
       this.setState({ userVote })
     }
@@ -68,7 +70,7 @@ class BlogPostTemplate extends React.Component {
         dislikes: data.dislikes,
         userVote: voteType,
       })
-      window.localStorage.setItem('userVote', voteType)
+      window.localStorage.setItem(`userVote-${post.slug}`, voteType)
     }
   }
 
