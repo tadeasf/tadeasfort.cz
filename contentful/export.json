@@ -280,7 +280,24 @@
             "type": "Symbol",
             "validations": [
               {
-                "in": ["general", "javascript", "static-sites"]
+                "in": [
+                  "general",
+                  "javascript",
+                  "static-sites",
+                  "portraits",
+                  "photography",
+                  "analogue",
+                  "travel",
+                  "development",
+                  "projects",
+                  "data",
+                  "ai",
+                  "website",
+                  "tutorial",
+                  "web-development",
+                  "data-analytics",
+                  "data-engineering"
+                ]
               }
             ]
           }
@@ -505,21 +522,17 @@
         "shortBio": {
           "en-US": {
             "nodeType": "document",
-            "data": {
-            },
+            "data": {},
             "content": [
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Research and recommendations for modern stack websites.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               }
@@ -617,18 +630,14 @@
         },
         "description": {
           "en-US": {
-            "data": {
-            },
+            "data": {},
             "content": [
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Webhooks notify you, another person or system when resources have changed by calling a given HTTP endpoint.",
                     "nodeType": "text"
                   }
@@ -642,111 +651,89 @@
         "body": {
           "en-US": {
             "nodeType": "document",
-            "data": {
-            },
+            "data": {},
             "content": [
               {
                 "nodeType": "heading-2",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "What are webhooks?",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "The webhooks are used to notify you when content has been changed. Specify a URL, configure your webhook, and we will send an HTTP POST request whenever something happens to your content.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "heading-2",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "How do I configure a webhook?",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Go to Settings → Webhooks from the navigation bar at the top. From there, hit Add webhook, and you will be directed to your new webhook. Then choose a name, put in the information of your HTTP endpoint (URL and authentication), specify any custom headers and select the types of events that should trigger the webhook.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "heading-2",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Why do I get an old version in the CDA?",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "As the delivery API is powered by a CDN network consisting of hundreds of servers distributed across continents, it takes some time (up to a few minutes) to reflect the changes to the published content. This must be taken into consideration when reacting to webhooks. In normal conditions, there could be a reasonable delay of 2 to 5 minutes.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Extracted from the ",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   },
                   {
                     "nodeType": "hyperlink",
@@ -757,20 +744,16 @@
                       {
                         "nodeType": "text",
                         "value": "Webhooks FAQ",
-                        "marks": [
-                        ],
-                        "data": {
-                        }
+                        "marks": [],
+                        "data": {}
                       }
                     ]
                   },
                   {
                     "nodeType": "text",
                     "value": ".",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               }
@@ -859,18 +842,14 @@
         },
         "description": {
           "en-US": {
-            "data": {
-            },
+            "data": {},
             "content": [
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Your very first content with Contentful, pulled in JSON format using the Content Delivery API.",
                     "nodeType": "text"
                   }
@@ -883,18 +862,14 @@
         },
         "body": {
           "en-US": {
-            "data": {
-            },
+            "data": {},
             "content": [
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "These is your very first content with Contentful, pulled in JSON format using the ",
                     "nodeType": "text"
                   },
@@ -904,10 +879,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Content Delivery API",
                         "nodeType": "text"
                       }
@@ -915,10 +888,8 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ". Content and presentation are now decoupled, allowing you to focus your efforts in building the perfect app.",
                     "nodeType": "text"
                   }
@@ -926,14 +897,11 @@
                 "nodeType": "paragraph"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Your first steps",
                     "nodeType": "text"
                   }
@@ -941,14 +909,11 @@
                 "nodeType": "heading-2"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Building with Contentful is easy. First take a moment to get ",
                     "nodeType": "text"
                   },
@@ -958,10 +923,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "the basics of content modelling",
                         "nodeType": "text"
                       }
@@ -969,10 +932,8 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", which you can set up in the ",
                     "nodeType": "text"
                   },
@@ -982,10 +943,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Contentful Web app",
                         "nodeType": "text"
                       }
@@ -993,10 +952,8 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ". Once you get that, feel free to drop by the ",
                     "nodeType": "text"
                   },
@@ -1006,10 +963,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Documentation",
                         "nodeType": "text"
                       }
@@ -1017,10 +972,8 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": " to learn a bit more about how to build your app with Contentful, in particular the ",
                     "nodeType": "text"
                   },
@@ -1030,10 +983,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "API basics",
                         "nodeType": "text"
                       }
@@ -1041,10 +992,8 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": " and each one of our four APIs, as shown below.",
                     "nodeType": "text"
                   }
@@ -1052,14 +1001,11 @@
                 "nodeType": "paragraph"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Content Delivery API",
                     "nodeType": "text"
                   }
@@ -1067,14 +1013,11 @@
                 "nodeType": "heading-3"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "The ",
                     "nodeType": "text"
                   },
@@ -1084,10 +1027,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Content Delivery API",
                         "nodeType": "text"
                       }
@@ -1095,16 +1036,13 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": " (CDA), available at ",
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "marks": [
                       {
                         "type": "code"
@@ -1114,10 +1052,8 @@
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.",
                     "nodeType": "text"
                   }
@@ -1125,14 +1061,11 @@
                 "nodeType": "paragraph"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "The API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.",
                     "nodeType": "text"
                   }
@@ -1140,14 +1073,11 @@
                 "nodeType": "paragraph"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Content Management API",
                     "nodeType": "text"
                   }
@@ -1155,14 +1085,11 @@
                 "nodeType": "heading-3"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "The ",
                     "nodeType": "text"
                   },
@@ -1172,10 +1099,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Content Management API",
                         "nodeType": "text"
                       }
@@ -1183,16 +1108,13 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": " (CMA), available at ",
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "marks": [
                       {
                         "type": "code"
@@ -1202,10 +1124,8 @@
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:",
                     "nodeType": "text"
                   }
@@ -1213,22 +1133,17 @@
                 "nodeType": "paragraph"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
-                            "data": {
-                            },
-                            "marks": [
-                            ],
+                            "data": {},
+                            "marks": [],
                             "value": "Automatic imports from different CMSes like WordPress or Drupal.",
                             "nodeType": "text"
                           }
@@ -1239,18 +1154,14 @@
                     "nodeType": "list-item"
                   },
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
-                            "data": {
-                            },
-                            "marks": [
-                            ],
+                            "data": {},
+                            "marks": [],
                             "value": "Integration with other backend systems, such as an e-commerce shop.",
                             "nodeType": "text"
                           }
@@ -1261,18 +1172,14 @@
                     "nodeType": "list-item"
                   },
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
-                            "data": {
-                            },
-                            "marks": [
-                            ],
+                            "data": {},
+                            "marks": [],
                             "value": "Building custom editing experiences. We built the ",
                             "nodeType": "text"
                           },
@@ -1282,10 +1189,8 @@
                             },
                             "content": [
                               {
-                                "data": {
-                                },
-                                "marks": [
-                                ],
+                                "data": {},
+                                "marks": [],
                                 "value": "Contentful Web app",
                                 "nodeType": "text"
                               }
@@ -1293,10 +1198,8 @@
                             "nodeType": "hyperlink"
                           },
                           {
-                            "data": {
-                            },
-                            "marks": [
-                            ],
+                            "data": {},
+                            "marks": [],
                             "value": " on top of this API.",
                             "nodeType": "text"
                           }
@@ -1310,14 +1213,11 @@
                 "nodeType": "unordered-list"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Preview API",
                     "nodeType": "text"
                   }
@@ -1325,14 +1225,11 @@
                 "nodeType": "heading-3"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "The ",
                     "nodeType": "text"
                   },
@@ -1342,10 +1239,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Content Preview API",
                         "nodeType": "text"
                       }
@@ -1353,16 +1248,13 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", available at ",
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "marks": [
                       {
                         "type": "code"
@@ -1372,10 +1264,8 @@
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", is a variant of the CDA for previewing your content before delivering it to your customers. You use the Content Preview API in combination with a \"preview\" deployment of your website (or a \"preview\" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a \"preview\" access token as though it were delivered by the CDA.",
                     "nodeType": "text"
                   }
@@ -1383,14 +1273,11 @@
                 "nodeType": "paragraph"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Images API",
                     "nodeType": "text"
                   }
@@ -1398,14 +1285,11 @@
                 "nodeType": "heading-3"
               },
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "The ",
                     "nodeType": "text"
                   },
@@ -1415,10 +1299,8 @@
                     },
                     "content": [
                       {
-                        "data": {
-                        },
-                        "marks": [
-                        ],
+                        "data": {},
+                        "marks": [],
                         "value": "Images API",
                         "nodeType": "text"
                       }
@@ -1426,16 +1308,13 @@
                     "nodeType": "hyperlink"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", available at ",
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
+                    "data": {},
                     "marks": [
                       {
                         "type": "code"
@@ -1445,10 +1324,8 @@
                     "nodeType": "text"
                   },
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": ", allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.",
                     "nodeType": "text"
                   }
@@ -1541,18 +1418,14 @@
         },
         "description": {
           "en-US": {
-            "data": {
-            },
+            "data": {},
             "content": [
               {
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
+                    "data": {},
+                    "marks": [],
                     "value": "Worry less about security, caching, and talking to the server. Static sites are the new thing.",
                     "nodeType": "text"
                   }
@@ -1566,96 +1439,77 @@
         "body": {
           "en-US": {
             "nodeType": "document",
-            "data": {
-            },
+            "data": {},
             "content": [
               {
                 "nodeType": "heading-2",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "The case for the static site generator",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "More and more developers are jumping on the \"go static train\", and rightfully so. Static pages are fast, lightweight, they scale well. They are more secure, and simple to maintain and they allow you to focus all your time and effort on the user interface. Often times, this dedication really shows.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "It just so happens that static site generators are mostly loved by developers, but not by the average Joe. They do not offer WYSIWYG, previewing on demo sites may take an update cycle, they are often based on markdown text files, and they require some knowledge of modern day repositories.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Moreover, when teams are collaborating, it can get complicated quickly. Has this article already been proof-read or reviewed? Is this input valid? Are user permissions available, e.g. for administering adding and removing team members? Can this article be published at a future date? How can a large repository of content be categorized, organized, and searched? All these requirements have previously been more or less solved within the admin area of your CMS. But of course with all the baggage that made you leave the appserver-app-database-in-one-big-blob stack in the first place.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "heading-2",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Content APIs to the rescue",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "An alternative is decoupling the content management aspect from the system. And then replacing the maintenance prone server with a cloud based web service offering. Effectively, instead of your CMS of old, you move to a ",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   },
                   {
                     "nodeType": "hyperlink",
@@ -1666,20 +1520,16 @@
                       {
                         "nodeType": "text",
                         "value": "Content Management as a Service (CMaaS)",
-                        "marks": [
-                        ],
-                        "data": {
-                        }
+                        "marks": [],
+                        "data": {}
                       }
                     ]
                   },
                   {
                     "nodeType": "text",
                     "value": " world, with a content API to deliver all your content. That way, you get the all the ",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   },
                   {
                     "nodeType": "hyperlink",
@@ -1690,60 +1540,48 @@
                       {
                         "nodeType": "text",
                         "value": "benefits of content management features",
-                        "marks": [
-                        ],
-                        "data": {
-                        }
+                        "marks": [],
+                        "data": {}
                       }
                     ]
                   },
                   {
                     "nodeType": "text",
                     "value": " while still being able to embrace the static site generator mantra.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "It so happens that Contentful is offering just that kind of content API. A service that",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               },
               {
                 "nodeType": "unordered-list",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "list-item",
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
                         "nodeType": "paragraph",
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
                             "nodeType": "text",
                             "value": "from the ground up has been designed to be fast, scalable, secure, and offer high uptime, so that you don’t have to worry about maintenance ever again.",
-                            "marks": [
-                            ],
-                            "data": {
-                            }
+                            "marks": [],
+                            "data": {}
                           }
                         ]
                       }
@@ -1751,21 +1589,17 @@
                   },
                   {
                     "nodeType": "list-item",
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
                         "nodeType": "paragraph",
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
                             "nodeType": "text",
                             "value": "offers a powerful editor and lots of flexibility in creating templates for your documents that your editors can reuse and combine, so that no developers resources are required in everyday writing and updating tasks.",
-                            "marks": [
-                            ],
-                            "data": {
-                            }
+                            "marks": [],
+                            "data": {}
                           }
                         ]
                       }
@@ -1773,21 +1607,17 @@
                   },
                   {
                     "nodeType": "list-item",
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
                         "nodeType": "paragraph",
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
                             "nodeType": "text",
                             "value": "separates content from presentation, so you can reuse your content repository for any device platform your heart desires. That way, you can COPE (\"create once, publish everywhere\").",
-                            "marks": [
-                            ],
-                            "data": {
-                            }
+                            "marks": [],
+                            "data": {}
                           }
                         ]
                       }
@@ -1795,21 +1625,17 @@
                   },
                   {
                     "nodeType": "list-item",
-                    "data": {
-                    },
+                    "data": {},
                     "content": [
                       {
                         "nodeType": "paragraph",
-                        "data": {
-                        },
+                        "data": {},
                         "content": [
                           {
                             "nodeType": "text",
                             "value": "offers webhooks that you can use to rebuild your static site in a fully automated fashion every time your content is modified.",
-                            "marks": [
-                            ],
-                            "data": {
-                            }
+                            "marks": [],
+                            "data": {}
                           }
                         ]
                       }
@@ -1819,16 +1645,13 @@
               },
               {
                 "nodeType": "paragraph",
-                "data": {
-                },
+                "data": {},
                 "content": [
                   {
                     "nodeType": "text",
                     "value": "Extracted from the article ",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   },
                   {
                     "nodeType": "hyperlink",
@@ -1839,20 +1662,16 @@
                       {
                         "nodeType": "text",
                         "value": "CMS-functionality for static site generators",
-                        "marks": [
-                        ],
-                        "data": {
-                        }
+                        "marks": [],
+                        "data": {}
                       }
                     ]
                   },
                   {
                     "nodeType": "text",
                     "value": ". Read more about the ",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   },
                   {
                     "nodeType": "hyperlink",
@@ -1863,20 +1682,16 @@
                       {
                         "nodeType": "text",
                         "value": "static site generators supported by Contentful",
-                        "marks": [
-                        ],
-                        "data": {
-                        }
+                        "marks": [],
+                        "data": {}
                       }
                     ]
                   },
                   {
                     "nodeType": "text",
                     "value": ".",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
+                    "marks": [],
+                    "data": {}
                   }
                 ]
               }

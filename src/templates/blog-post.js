@@ -6,7 +6,8 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 import { BLOCKS } from '@contentful/rich-text-types'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import readingTime from 'reading-time'
-
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
@@ -23,20 +24,23 @@ class BlogPostTemplate extends React.Component {
     )
     const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
     const { minutes: timeToRead } = readingTime(plainTextBody)
-    
+    const galleryImages = post.gallery
+      ? post.gallery.map((image) => (
+          <div key={image.id}>
+            <GatsbyImage image={getImage(image)} alt="" />
+          </div>
+        ))
+      : null
     const options = {
       renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { gatsbyImage, description } = node.data.target
-        return (
-           <GatsbyImage
-              image={getImage(gatsbyImage)}
-              alt={description}
-           />
-         )
+          const gatsbyImageData = getImage(node.data.target.gatsbyImageData)
+          return (
+            <GatsbyImage image={gatsbyImageData} alt={node.data.target.title} />
+          )
         },
       },
-    };
+    }
 
     return (
       <Layout location={this.props.location}>
@@ -60,6 +64,26 @@ class BlogPostTemplate extends React.Component {
             <div className={styles.body}>
               {post.body?.raw && renderRichText(post.body, options)}
             </div>
+            {galleryImages && (
+              <Carousel
+                showArrows={true}
+                showStatus={true}
+                showThumbs={true}
+                infiniteLoop={true}
+                autoPlay={true}
+                interval={3000}
+                transitionTime={1000}
+                stopOnHover={true}
+                swipeable={true}
+                dynamicHeight={true}
+                emulateTouch={true}
+                thumbWidth={100}
+                selectedItem={0}
+                swipeScrollTolerance={5}
+              >
+                {galleryImages}
+              </Carousel>
+            )}
             <Tags tags={post.tags} />
             {(previous || next) && (
               <nav>
@@ -112,7 +136,10 @@ export const pageQuery = graphql`
       }
       body {
         raw
-        
+      }
+      gallery {
+        id
+        gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
       }
       tags
       description {
