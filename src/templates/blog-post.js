@@ -43,15 +43,16 @@ class BlogPostTemplate extends React.Component {
     let response
     try {
       response = await fetch(`/api/vote/${post.slug}`)
+      if (response.ok) {
+        const data = await response.json()
+        this.setState({ likes: data.likes, dislikes: data.dislikes })
+      } else {
+        this.setState({ error: 'Error fetching votes: ' + response.statusText })
+      }
     } catch (error) {
-      console.error('Error fetching votes: ', error)
-    }
-    if (response.ok) {
-      const data = await response.json()
-      this.setState({ likes: data.likes, dislikes: data.dislikes })
+      this.setState({ error: 'Error fetching votes: ' + error.message })
     }
   }
-
   handleVote = async (voteType) => {
     const post = get(this.props, 'data.contentfulBlogPost')
     let response
