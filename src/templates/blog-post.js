@@ -28,14 +28,24 @@ class BlogPostTemplate extends React.Component {
   componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
 
-    // Load user vote from local storage
-    const userVote = window.localStorage.getItem(`userVote-${post.slug}`)
-    if (userVote) {
-      this.setState({ userVote })
-    }
-
     // Fetch the initial likes/dislikes counts when the component mounts
     this.fetchVotes()
+
+    // Load user vote from local storage
+    const userVote = window.localStorage.getItem(`userVote-${post.slug}`)
+
+    fetch(`/api/vote/${post.slug}/userVoted`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (userVote && !data.userVoted) {
+          // the user's vote is in local storage but not in db
+          // remove the vote from local storage
+          window.localStorage.removeItem(`userVote-${post.slug}`)
+          this.setState({ userVote: null })
+        } else if (userVote) {
+          this.setState({ userVote })
+        }
+      })
   }
 
   fetchVotes = async () => {
