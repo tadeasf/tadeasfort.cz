@@ -153,7 +153,7 @@ class BlogPostTemplate extends React.Component {
                 transitionTime={500}
                 stopOnHover={true}
                 swipeable={true}
-                dynamicHeight={false}
+                dynamicHeight={true}
                 emulateTouch={true}
                 selectedItem={0}
                 swipeScrollTolerance={5}
