@@ -32,14 +32,8 @@ class BlogPostTemplate extends React.Component {
   fetchVotes = async () => {
     const post = get(this.props, 'data.contentfulBlogPost')
     try {
-      const response = await fetch(
-        `http://194.182.90.63:3333/vote/${post.slug}`
-      )
-      const data = await response.json()
-      this.setState({
-        likes: data.likes,
-        dislikes: data.dislikes,
-      })
+      const response = await fetch(`/api/vote/${post.slug}`)
+      // ...
     } catch (error) {
       console.error('Error fetching votes: ', error)
     }
@@ -48,22 +42,10 @@ class BlogPostTemplate extends React.Component {
   handleVote = async (voteType) => {
     const post = get(this.props, 'data.contentfulBlogPost')
     try {
-      const response = await fetch(
-        `http://194.182.90.63:3333/vote/${post.slug}/${voteType}`,
-        { method: 'POST' }
-      )
-      const data = await response.json()
-
-      if (!response.ok) {
-        this.setState({ error: data.message })
-        return
-      }
-
-      this.setState({
-        likes: data.likes,
-        dislikes: data.dislikes,
-        error: null, // Clear any previous error
+      const response = await fetch(`/api/vote/${post.slug}/${voteType}`, {
+        method: 'POST',
       })
+      // ...
     } catch (error) {
       this.setState({ error: 'Error voting: ' + error.message })
     }
