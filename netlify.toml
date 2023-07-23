@@ -5,8 +5,3 @@
   CONTENTFUL_SPACE_ID = "j91kd33adokz"
   CONTENTFUL_ACCESS_TOKEN = "9e9BJ7-HPSOnqCewnqGx78aNN_i9ABbtcuo7VshXcCs"
   CONTENTFUL_PREVIEW_ACCESS_TOKEN = "OrzIXJV2dzI4O2UH-us_G4fpbz0WOb8rmSHigZd3gNI"
-[[redirects]]
-  from = "/api/*"
-  to = "http://194.182.90.63:3333/:splat"
-  status = 200
-  force = true
