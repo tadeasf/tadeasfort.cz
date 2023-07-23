@@ -7,7 +7,7 @@
   padding-bottom: var(--size-gutter);
   padding-left: var(--size-gutter);
   position: relative;
-  top: -1em;
+  top: 1em;
 }
 
 .article {
