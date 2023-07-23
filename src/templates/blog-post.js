@@ -13,23 +13,33 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
 import * as styles from './blog-post.module.css'
+import axios from 'axios'
 
 class BlogPostTemplate extends React.Component {
   state = {
     likeActive: false,
     dislikeActive: false,
+    likes: 0,
+    dislikes: 0,
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
+    const response = await axios.get(`/vote/${post.slug}`)
 
     // Load user vote from local storage
     const likeActive = localStorage.getItem(`like-${post.slug}`)
     const dislikeActive = localStorage.getItem(`dislike-${post.slug}`)
-    this.setState({ likeActive: !!likeActive, dislikeActive: !!dislikeActive })
+
+    this.setState({
+      likeActive: !!likeActive,
+      dislikeActive: !!dislikeActive,
+      likes: response.data.likes,
+      dislikes: response.data.dislikes,
+    })
   }
 
-  handleVote = (voteType) => {
+  handleVote = async (voteType) => {
     const post = get(this.props, 'data.contentfulBlogPost')
     const oppositeVote = voteType === 'like' ? 'dislike' : 'like'
 
@@ -44,6 +54,15 @@ class BlogPostTemplate extends React.Component {
     this.setState({
       [`${voteType}Active`]: true,
       [`${oppositeVote}Active`]: false,
+    })
+
+    // Make API call to register vote
+    const response = await axios.post(`/api/vote/${post.slug}/${voteType}`)
+
+    // Update likes and dislikes state from response
+    this.setState({
+      likes: response.data.likes,
+      dislikes: response.data.dislikes,
     })
   }
 
@@ -89,19 +108,19 @@ class BlogPostTemplate extends React.Component {
         <div className={styles.voteButtons}>
           <button
             className={`${styles.voteButton} ${
-              this.state.userVote === 'like' ? styles.liked : ''
+              this.state.likeActive ? styles.liked : ''
             }`}
             onClick={() => this.handleVote('like')}
-            disabled={this.state.userVote}
+            disabled={this.state.likeActive}
           >
             Like [{this.state.likes}]
           </button>
           <button
             className={`${styles.voteButton} ${
-              this.state.userVote === 'dislike' ? styles.disliked : ''
+              this.state.dislikeActive ? styles.disliked : ''
             }`}
             onClick={() => this.handleVote('dislike')}
-            disabled={this.state.userVote}
+            disabled={this.state.dislikeActive}
           >
             Dislike [{this.state.dislikes}]
           </button>
@@ -126,7 +145,7 @@ class BlogPostTemplate extends React.Component {
                 transitionTime={500}
                 stopOnHover={true}
                 swipeable={true}
-                dynamicHeight={false}
+                dynamicHeight={true}
                 emulateTouch={true}
                 selectedItem={0}
                 swipeScrollTolerance={5}
