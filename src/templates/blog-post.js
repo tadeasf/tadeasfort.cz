@@ -20,34 +20,55 @@ class BlogPostTemplate extends React.Component {
     this.state = {
       likes: 0,
       dislikes: 0,
+      userVote: null, // 'like', 'dislike', or null
       error: null,
     }
   }
 
   componentDidMount() {
+    // Load user vote from local storage
+    const userVote = window.localStorage.getItem('userVote')
+    if (userVote) {
+      this.setState({ userVote })
+    }
+
     // Fetch the initial likes/dislikes counts when the component mounts
     this.fetchVotes()
   }
 
   fetchVotes = async () => {
     const post = get(this.props, 'data.contentfulBlogPost')
+    let response
     try {
-      const response = await fetch(`/api/vote/${post.slug}`)
-      // ...
+      response = await fetch(`/api/vote/${post.slug}`)
     } catch (error) {
       console.error('Error fetching votes: ', error)
+    }
+    if (response.ok) {
+      const data = await response.json()
+      this.setState({ likes: data.likes, dislikes: data.dislikes })
     }
   }
 
   handleVote = async (voteType) => {
     const post = get(this.props, 'data.contentfulBlogPost')
+    let response
+
     try {
-      const response = await fetch(`/api/vote/${post.slug}/${voteType}`, {
+      response = await fetch(`/api/vote/${post.slug}/${voteType}`, {
         method: 'POST',
       })
-      // ...
     } catch (error) {
       this.setState({ error: 'Error voting: ' + error.message })
+    }
+    if (response.ok) {
+      const data = await response.json()
+      this.setState({
+        likes: data.likes,
+        dislikes: data.dislikes,
+        userVote: voteType,
+      })
+      window.localStorage.setItem('userVote', voteType)
     }
   }
 
@@ -91,12 +112,21 @@ class BlogPostTemplate extends React.Component {
           content={post.description}
         />
         <div className={styles.voteButtons}>
-          <button onClick={() => this.handleVote('like')}>Like</button>
-          <p>{this.state.likes}</p>
-          <button onClick={() => this.handleVote('dislike')}>Dislike</button>
-          <p>{this.state.dislikes}</p>
+          <button
+            className={styles.voteButton}
+            onClick={() => this.handleVote('like')}
+          >
+            Like
+          </button>
+          <p className={styles.count}>{this.state.likes}</p>
+          <button
+            className={styles.voteButton}
+            onClick={() => this.handleVote('dislike')}
+          >
+            Dislike
+          </button>
+          <p className={styles.count}>{this.state.dislikes}</p>
         </div>
-        {this.state.error && <p>{this.state.error}</p>}
         <div className={styles.container}>
           <span className={styles.meta}>
             {post.author?.name} &middot;{' '}
