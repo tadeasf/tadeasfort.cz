@@ -31,9 +31,7 @@ module.exports = {
           'G-F6RSXJ59G6', // Google Analytics / GA
           // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
         ],
-        gtagConfig: {
-          send_page_view: true,
-        },
+        gtagConfig: {},
         pluginConfig: {
           head: true,
           delayOnRouteUpdate: 0,
