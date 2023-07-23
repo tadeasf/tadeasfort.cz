@@ -72,7 +72,7 @@ class BlogPostTemplate extends React.Component {
                 infiniteLoop={true}
                 autoPlay={true}
                 interval={3000}
-                transitionTime={1000}
+                transitionTime={500}
                 stopOnHover={true}
                 swipeable={true}
                 dynamicHeight={true}
