@@ -21,11 +21,11 @@ class BlogPostTemplate extends React.Component {
     dislikeActive: false,
     likes: 0,
     dislikes: 0,
-  }
+  };
 
   async componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    let url = `https://194.182.90.63:3333/vote/${post.slug}`
+    let url = `https://tadeasfort.eu/vote/${post.slug}`
     console.log(url)
     const response = await axios.get(url)
 
@@ -41,34 +41,55 @@ class BlogPostTemplate extends React.Component {
     })
   }
 
-  handleVote = async (voteType) => {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const oppositeVote = voteType === 'like' ? 'dislike' : 'like'
+  componentDidUpdate(prevProps, prevState) {
+    const post = get(this.props, 'data.contentfulBlogPost');
 
-    if (localStorage.getItem(`${voteType}-${post.slug}`)) {
-      return // User already voted this type. Stop here.
+    // If the likeActive or dislikeActive state changes, update localStorage
+    if (prevState.likeActive !== this.state.likeActive) {
+      if (this.state.likeActive) {
+        localStorage.setItem(`like-${post.slug}`, true);
+        localStorage.removeItem(`dislike-${post.slug}`);
+      } else {
+        localStorage.removeItem(`like-${post.slug}`);
+      }
+    } else if (prevState.dislikeActive !== this.state.dislikeActive) {
+      if (this.state.dislikeActive) {
+        localStorage.setItem(`dislike-${post.slug}`, true);
+        localStorage.removeItem(`like-${post.slug}`);
+      } else {
+        localStorage.removeItem(`dislike-${post.slug}`);
+      }
+    }
+  }
+
+    handleVote = async (voteType) => {
+    const post = get(this.props, 'data.contentfulBlogPost');
+    const oppositeVote = voteType === 'like' ? 'dislike' : 'like';
+
+    // If user has voted this type already, just return
+    if (this.state[`${voteType}Active`]) return;
+
+    // If user has voted opposite type before, remove it
+    if (this.state[`${oppositeVote}Active`]) {
+      this.setState({ [`${oppositeVote}Active`]: false });
     }
 
-    // Set this vote type to localStorage
-    localStorage.setItem(`${voteType}-${post.slug}`, true)
-    localStorage.removeItem(`${oppositeVote}-${post.slug}`)
+    // Now set new vote type to state
+    this.setState({ [`${voteType}Active`]: true });
 
-    this.setState({
-      [`${voteType}Active`]: true,
-      [`${oppositeVote}Active`]: false,
-    })
+    // Prepare API URL and vote action
+    const url = `https://tadeasfort.eu/vote/${post.slug}/${voteType}`;
+    const action = this.state[`${oppositeVote}Active`] ? 'switch' : 'new';
 
     // Make API call to register vote
-    let url = `https://194.182.90.63:3333/vote/${post.slug}/${voteType}`
-    console.log(url)
-    const response = await axios.post(url)
+    const response = await axios.post(url, { action });
 
     // Update likes and dislikes state from response
     this.setState({
       likes: response.data.likes,
       dislikes: response.data.dislikes,
-    })
-  }
+    });
+  };
 
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
