@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -15,63 +15,36 @@ import Tags from '../components/tags'
 import * as styles from './blog-post.module.css'
 
 class BlogPostTemplate extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      likes: 0,
-      dislikes: 0,
-      userVote: null, // 'like', 'dislike', or null
-      error: null,
-    }
+  state = {
+    likeActive: false,
+    dislikeActive: false,
   }
 
   componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
 
     // Load user vote from local storage
-    const userVote = window.localStorage.getItem(`userVote-${post.slug}`)
-    if (userVote) {
-      this.setState({ userVote })
-    }
-
-    // Fetch the initial likes/dislikes counts when the component mounts
-    this.fetchVotes()
+    const likeActive = localStorage.getItem(`like-${post.slug}`)
+    const dislikeActive = localStorage.getItem(`dislike-${post.slug}`)
+    this.setState({ likeActive: !!likeActive, dislikeActive: !!dislikeActive })
   }
 
-  fetchVotes = async () => {
+  handleVote = (voteType) => {
     const post = get(this.props, 'data.contentfulBlogPost')
-    let response
-    try {
-      response = await fetch(`/api/vote/${post.slug}`)
-    } catch (error) {
-      console.error('Error fetching votes: ', error)
-    }
-    if (response.ok) {
-      const data = await response.json()
-      this.setState({ likes: data.likes, dislikes: data.dislikes })
-    }
-  }
+    const oppositeVote = voteType === 'like' ? 'dislike' : 'like'
 
-  handleVote = async (voteType) => {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    let response
+    if (localStorage.getItem(`${voteType}-${post.slug}`)) {
+      return // User already voted this type. Stop here.
+    }
 
-    try {
-      response = await fetch(`/api/vote/${post.slug}/${voteType}`, {
-        method: 'POST',
-      })
-    } catch (error) {
-      this.setState({ error: 'Error voting: ' + error.message })
-    }
-    if (response.ok) {
-      const data = await response.json()
-      this.setState({
-        likes: data.likes,
-        dislikes: data.dislikes,
-        userVote: voteType,
-      })
-      window.localStorage.setItem(`userVote-${post.slug}`, voteType)
-    }
+    // Set this vote type to localStorage
+    localStorage.setItem(`${voteType}-${post.slug}`, true)
+    localStorage.removeItem(`${oppositeVote}-${post.slug}`)
+
+    this.setState({
+      [`${voteType}Active`]: true,
+      [`${oppositeVote}Active`]: false,
+    })
   }
 
   render() {
