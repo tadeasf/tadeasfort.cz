@@ -67,30 +67,41 @@
 }
 .voteButtons {
   display: flex;
-  justify-content: center;
-  gap: 20px; /* adjust as needed */
+  justify-content: left;
+  margin: 0 10px -3rem 0;
+  padding: 40px 50px;
+  border-radius: 12px; /* This makes the background round */
+  gap: 10px; /* This introduces a margin between the two buttons */
 }
 
 .voteButton {
-  padding: 10px 20px;
   border: none;
-  background-color: #ddd;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center; /* This aligns the text and the icons vertically in the center */
+  gap: 3px;
+  background-color: #bfc1c2; /* This sets the default unselected background color */
+  border-radius: 0.6rem;
+  transition: background-color 700ms; /* This sets up the animation for color transition */
 }
 
 .voteButton:hover {
   background-color: #ccc;
 }
 
-.voteButton.liked {
-  background-color: blue;
+.voteButton.like-active {
+  background-color: #2f97b7d6; /* This sets the final selected color for "like" */
 }
 
-.voteButton.disliked {
-  background-color: red;
+.voteButton.dislike-active {
+  background-color: #5d1616d2; /* This sets the final selected color for "dislike" */
+}
+
+@media (max-width: 480px) {
+  .voteButtons {
+    justify-content: center;
+  }
 }
 
 @media (min-width: 768px) {

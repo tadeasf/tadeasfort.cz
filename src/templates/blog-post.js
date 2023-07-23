@@ -13,6 +13,8 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
 import * as styles from './blog-post.module.css'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 import axios from 'axios'
 
 class BlogPostTemplate extends React.Component {
@@ -21,7 +23,7 @@ class BlogPostTemplate extends React.Component {
     dislikeActive: false,
     likes: 0,
     dislikes: 0,
-  };
+  }
 
   async componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
@@ -42,54 +44,54 @@ class BlogPostTemplate extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const post = get(this.props, 'data.contentfulBlogPost');
+    const post = get(this.props, 'data.contentfulBlogPost')
 
     // If the likeActive or dislikeActive state changes, update localStorage
     if (prevState.likeActive !== this.state.likeActive) {
       if (this.state.likeActive) {
-        localStorage.setItem(`like-${post.slug}`, true);
-        localStorage.removeItem(`dislike-${post.slug}`);
+        localStorage.setItem(`like-${post.slug}`, true)
+        localStorage.removeItem(`dislike-${post.slug}`)
       } else {
-        localStorage.removeItem(`like-${post.slug}`);
+        localStorage.removeItem(`like-${post.slug}`)
       }
     } else if (prevState.dislikeActive !== this.state.dislikeActive) {
       if (this.state.dislikeActive) {
-        localStorage.setItem(`dislike-${post.slug}`, true);
-        localStorage.removeItem(`like-${post.slug}`);
+        localStorage.setItem(`dislike-${post.slug}`, true)
+        localStorage.removeItem(`like-${post.slug}`)
       } else {
-        localStorage.removeItem(`dislike-${post.slug}`);
+        localStorage.removeItem(`dislike-${post.slug}`)
       }
     }
   }
 
-    handleVote = async (voteType) => {
-    const post = get(this.props, 'data.contentfulBlogPost');
-    const oppositeVote = voteType === 'like' ? 'dislike' : 'like';
+  handleVote = async (voteType) => {
+    const post = get(this.props, 'data.contentfulBlogPost')
+    const oppositeVote = voteType === 'like' ? 'dislike' : 'like'
 
     // If user has voted this type already, just return
-    if (this.state[`${voteType}Active`]) return;
+    if (this.state[`${voteType}Active`]) return
 
     // If user has voted opposite type before, remove it
     if (this.state[`${oppositeVote}Active`]) {
-      this.setState({ [`${oppositeVote}Active`]: false });
+      this.setState({ [`${oppositeVote}Active`]: false })
     }
 
     // Now set new vote type to state
-    this.setState({ [`${voteType}Active`]: true });
+    this.setState({ [`${voteType}Active`]: true })
 
     // Prepare API URL and vote action
-    const url = `https://tadeasfort.eu/vote/${post.slug}/${voteType}`;
-    const action = this.state[`${oppositeVote}Active`] ? 'switch' : 'new';
+    const url = `https://tadeasfort.eu/vote/${post.slug}/${voteType}`
+    const action = this.state[`${oppositeVote}Active`] ? 'switch' : 'new'
 
     // Make API call to register vote
-    const response = await axios.post(url, { action });
+    const response = await axios.post(url, { action })
 
     // Update likes and dislikes state from response
     this.setState({
       likes: response.data.likes,
       dislikes: response.data.dislikes,
-    });
-  };
+    })
+  }
 
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
@@ -130,32 +132,34 @@ class BlogPostTemplate extends React.Component {
           title={post.title}
           content={post.description}
         />
-        <div className={styles.voteButtons}>
-          <button
-            className={`${styles.voteButton} ${
-              this.state.likeActive ? styles.liked : ''
-            }`}
-            onClick={() => this.handleVote('like')}
-            disabled={this.state.likeActive}
-          >
-            Like [{this.state.likes}]
-          </button>
-          <button
-            className={`${styles.voteButton} ${
-              this.state.dislikeActive ? styles.disliked : ''
-            }`}
-            onClick={() => this.handleVote('dislike')}
-            disabled={this.state.dislikeActive}
-          >
-            Dislike [{this.state.dislikes}]
-          </button>
-        </div>
         <div className={styles.container}>
           <span className={styles.meta}>
             {post.author?.name} &middot;{' '}
             <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
             {timeToRead} minute read
           </span>
+          <div className={styles.voteButtons}>
+            <button
+              className={`${styles.voteButton} ${
+                this.state.likeActive ? styles.likeActive : ''
+              }`}
+              onClick={() => this.handleVote('like')}
+              disabled={this.state.likeActive}
+            >
+              <ThumbUpIcon />
+              Like [{this.state.likes}]
+            </button>
+            <button
+              className={`${styles.voteButton} ${
+                this.state.dislikeActive ? styles.dislikeActive : ''
+              }`}
+              onClick={() => this.handleVote('dislike')}
+              disabled={this.state.dislikeActive}
+            >
+              <ThumbDownIcon />
+              Dislike [{this.state.dislikes}]
+            </button>
+          </div>
           <div className={styles.article}>
             <div className={styles.body}>
               {post.body?.raw && renderRichText(post.body, options)}
