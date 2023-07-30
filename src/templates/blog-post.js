@@ -27,7 +27,7 @@ class BlogPostTemplate extends React.Component {
 
   async componentDidMount() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    let url = `https://tadeasfort.eu/vote/${post.slug}`
+    let url = `https://tadeasfort.eu/node-express-gatsby/vote/${post.slug}`
     console.log(url)
     const response = await axios.get(url)
 
@@ -80,7 +80,7 @@ class BlogPostTemplate extends React.Component {
     this.setState({ [`${voteType}Active`]: true })
 
     // Prepare API URL and vote action
-    const url = `https://tadeasfort.eu/vote/${post.slug}/${voteType}`
+    const url = `https://tadeasfort.eu/node-express-gatsby/vote/${post.slug}/${voteType}`
     const action = this.state[`${oppositeVote}Active`] ? 'switch' : 'new'
 
     // Make API call to register vote
